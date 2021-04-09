@@ -1,1 +1,1 @@
-# 6sem_lab_Morden_Solid
+# 6sem_lab_Modern_Solid
