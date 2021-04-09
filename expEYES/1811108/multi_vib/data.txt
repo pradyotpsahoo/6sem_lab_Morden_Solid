@@ -1,0 +1,32 @@
+
+no of turns in coil = 3000
+length of tube = 20cm
+radius of magnet = 1.1mm
+radius of  tube = 0.68cm
+
+MULTIVIBRATOR 1:-
+Ra = 10070\Omega
+Rb = 9888\Omega
+Rl = 982.37 \Omega
+C = 7.5nF
+Ct = 98.4nF
+Vcc= 4.11V
+theoratical duty cycle =  66.87%
+
+
+MULTIVIBRATOR 2:-
+Ra = 2673 \Omega
+Rb = 9888 \Omega
+Rl = 982.37 \Omega
+C = 7.5nF
+Ct = 98.4nF
+Vcc= 4.11V
+
+
+MULTIVIBRATOR 3:-
+R3 = 2673 \Omega
+R1 =  968 \Omega
+RL = 982.37 \Omega
+C = 7.5nF
+Ct = 98.4nF
+Vcc= 4.11V
