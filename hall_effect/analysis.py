@@ -1,0 +1,100 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt
+from scipy.optimize import curve_fit
+from  scipy.interpolate import  interpolate
+
+lin = lambda x,b,a : a +x*b
+def cal():
+    df = pd.read_excel('hall_eff.xlsx', sheet_name='cal')
+    df.dropna()
+    i = np.array(df['i'].tolist())
+    g = np.array(df['g'].tolist())
+    plt.figure(tight_layout=True)
+    plt.plot(i,g,c='black',marker='o',ls='',label='Data Points', mfc="red", ms="10")
+    pov,pocv = curve_fit(lin,i,g)
+    plt.plot(i,lin(i,*pov),c='black',label='Fit', lw="2")
+    plt.legend() 
+    text = "Slope= %0.3f +/- %0.3f\nIntercept= %0.3f +/- %0.3f" % (pov[0], pocv[0][0]**0.5, pov[1], pocv[1][1]**0.5)
+    plt.text(2,1000, text, size=12)
+    plt.grid()
+    plt.title(r"Calibration of Magnetic field", size=14)
+    plt.xlabel("I(A)", size=14)
+    plt.ylabel(r"H$(Gauss)$", size=14)
+    plt.savefig("cal.png")
+    plt.show()
+    plt.clf()
+
+
+def n_ge():
+    df = pd.read_excel('hall_eff.xlsx', sheet_name='n-ge')
+    df.dropna()
+    i = np.array(df['i'].tolist())
+    v = np.array(df['v'].tolist())
+    plt.figure(tight_layout=True)
+    plt.plot(i,v,c='black',marker='o',ls='',label='Data Points', mfc="blue", ms="10")
+    pov,pocv = curve_fit(lin,i,v)
+    plt.plot(i,lin(i,*pov),c='black',label='Fit', lw="2")
+    plt.legend() 
+    text = "Slope= %0.3f +/- %0.3f\nIntercept= %0.3f +/- %0.3f" % (pov[0], pocv[0][0]**0.5, pov[1], pocv[1][1]**0.5)
+    plt.text(i[-1]/3,v[-1]/5,text,size=12)
+    plt.title("V vs I for n-Ge",size=14)
+    plt.xlabel(r"I$(mA)$", size=14)
+    plt.ylabel(r"V$(mV)$", size=14)
+    plt.grid()
+    plt.savefig("nge.png")
+    plt.show()
+    plt.clf()
+
+
+def p_ge():
+    df = pd.read_excel('hall_eff.xlsx', sheet_name='p-ge')
+    df.dropna()
+    i = np.array(df['i'].tolist())
+    v = np.array(df['v'].tolist())
+    plt.figure(tight_layout=True)
+    plt.plot(i, v, c='black', marker='o', ls='', label='Data Points', mfc="m", ms="10")
+    pov,pocv = curve_fit(lin,i,v)
+    plt.plot(i, lin(i, *pov), c='black',label='Fit', lw="2")
+    plt.legend() 
+    text = "Slope= %0.3f +/- %0.3f\nIntercept= %0.3f +/- %0.3f" % (pov[0], pocv[0][0]**0.5, pov[1], pocv[1][1]**0.5)
+    plt.text(i[-1]/3,v[-1]/5,text, size=12)
+    plt.title(r"$V$ vs $I$ for p-Ge", size=14)
+    plt.grid()
+    plt.xlabel(r"I$(mA)$", size=14)
+    plt.ylabel(r"V$(mV)$", size=14)
+    plt.savefig("pge.png")
+    plt.show()
+    plt.clf()
+
+    
+def temp():
+    df = pd.read_excel('hall_eff.xlsx', sheet_name='temp')
+    df.dropna()
+    t = np.array(df['temp'].tolist())
+    v = np.array(df['Rh'].tolist())
+    plt.figure(tight_layout=True)
+    plt.plot(t,v,c='black',marker='o',ls='',label='Data Points', ms=10, mfc='green')
+    t_new = np.linspace(t[0], t[-1])
+    a_BSpline = interpolate.make_interp_spline(t, v)
+    v_new = a_BSpline(t_new)
+    plt.plot(t_new, v_new, lw='2', c='k')
+    plt.title(r"$R_{H}$ vs $T$ for p-Ge", size=14)
+    plt.grid()
+    plt.xlabel(r"T$(^{\circ}C)$", size=14)
+    plt.ylabel(r"$R_{H}(cm^{3}c^{-1})$", size=14)
+    plt.hlines(0, 20, 130, colors="k", linestyles="--", linewidth=1.5)
+    plt.vlines(93.5, -5, 40, colors="k", linestyles="--", linewidth=1.5)
+    plt.legend()
+    plt.text(100, 5, "(92, 0)", size=12)
+    plt.xlim(20, 130)
+    plt.ylim(-3, 22)
+    plt.savefig("temp.png")
+    plt.show()
+    plt.clf()
+
+
+#cal()
+#n_ge()
+#p_ge()
+temp()

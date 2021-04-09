@@ -1,0 +1,51 @@
+\section{calculation}
+\noindent Let $K=\frac{2\sqrt{2}}{P}\frac{32\pi n}{10\sqrt{125}\ a}$\ for simplicity.\\ Now, using the values of P,n and a the value of K= $28.473cm^{-2}$\\ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now comparing the slope of the graphs with equation-\eqref{com}\ we get, slope of graph (S)= $\frac{H_0}{K}$. Where S is the slope of graph of different frequencies. So $H_0=S\times K$. g is calculated using equation-\eqref{g}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+	\centering
+	\caption{The table below is the calculation of $H_0$\ and Lande's g for electron.}
+	\label{tabcal}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		$\nu_1$                                        & S                     &$ H_0 $                    & g                     & Avg. g                  \\ %\cline{1-3}
+		(\h) & (mm.A) & (G) &  &   \\ \hline
+		16.25                                     & 2.354                       & 6.703                    & 1.733                 & \multirow{5}{*}{1.702} \\ \cline{1-4}
+		15.3                                      & 2.196                       & 6.253                    & 1.749                 &                        \\ \cline{1-4}
+		14.37                                     & 2.197                       & 6.256                    & 1.642                 &                        \\ \cline{1-4}
+		13.36                                     & 1.952                       & 5.558                    & 1.718                 &                        \\ \cline{1-4}
+		12.49                                     & 1.879                       & 5.35                     & 1.668                 &                        \\ \hline
+	\end{tabular}
+\end{table}
+\section{Error analysis}
+Uncertainty in measuring frequency ($\delta \nu_1$)=0.01 \h \\
+Uncertainty in measuring the P value =$\delta P=1mm$\\
+Relative uncertainty in P =$\frac{\delta P}{P}=\frac{1}{58}=0.017$\\
+Let Error in slope = $\delta S$\\
+So clearly $\frac{\delta H_0}{H_0}=\sqrt{\left(\frac{\delta P}{P} \right) ^2+
+								\left(\frac{\delta S}{S} \right) ^2}$\\ \\
+And,
+$\delta g = g\times \sqrt{\left(\frac{\delta H_0}{H_0} \right) ^2+
+	\left(\frac{\delta \nu_1}{\nu_1} \right) ^2}$\\ 
+$\Rightarrow \delta g=g\times \sqrt{\left(\frac{\delta P}{P} \right) ^2+
+	\left(\frac{\delta S}{S} \right) ^2+
+	\left(\frac{\delta \nu_1}{\nu_1} \right) ^2} $
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[H]
+	\caption{Error}
+	\label{taberr}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		$\nu_1$ & $\frac{\delta \nu_1}{\nu_1}$       & S      & $\delta S$     & $\frac{\delta S}{S}$  & g     & $\delta g$    & Avg. $\delta g$                    \\ 
+		(\h)   & ($\times10^{-3}$) & (mm.A) & (mm.A) &       &       &       &                         \\ \hline
+			16.25  & 0.615             & 2.354  & 0.044  & 0.019 & 1.733 & 0.026 & \multirow{5}{*}{0.0552} \\ \cline{1-7}
+			15.3   & 0.654             & 2.196  & 0.125  & 0.057 & 1.749 & 0.059 &                         \\ \cline{1-7}
+			14.37  & 0.696             & 2.197  & 0.118  & 0.054 & 1.642 & 0.057 &                         \\ \cline{1-7}
+			13.36  & 0.749             & 1.952  & 0.087  & 0.045 & 1.718 & 0.048 &                         \\ \cline{1-7}
+			12.49  & 0.801             & 1.879  & 0.157  & 0.084 & 1.668 & 0.086 &                         \\ \hline
+		\end{tabular}
+	\end{table}
